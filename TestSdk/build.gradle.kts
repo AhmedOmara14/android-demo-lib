@@ -50,22 +50,20 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
-    api("com.squareup.picasso:picasso:2.8")
+    implementation("com.squareup.picasso:picasso:2.8")
 }
 
-publishing {
-    publications {
-        create<MavenPublication>("mavenJava") {
-            groupId = "com.github.AhmedOmara14"
-            artifactId = "android-demo-lib"
-            version = "9.0"
 
-            pom {
-                description.set("DESCRIPTION")
+afterEvaluate {
+    publishing {
+        publications {
+            register("maven", MavenPublication::class){
+
+                from(components.findByName("release"))
+                groupId = "com.github.AhmedOmara14"
+                artifactId = "android-demo-lib"
+                version = "15.0"
             }
         }
-    }
-    repositories {
-        mavenLocal()
     }
 }
