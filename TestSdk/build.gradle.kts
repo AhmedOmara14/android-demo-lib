@@ -58,7 +58,7 @@ publishing {
         create<MavenPublication>("mavenJava") {
             groupId = "com.github.AhmedOmara14"
             artifactId = "android-demo-lib"
-            version = "1.0"
+            version = "5.0"
 
             pom {
                 description.set("DESCRIPTION")
