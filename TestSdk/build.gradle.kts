@@ -1,6 +1,8 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("maven-publish") // Apply the maven-publish plugin
+    id("kotlin-android")
 }
 
 android {
@@ -21,15 +23,21 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            consumerProguardFiles("proguard-rules.pro")
+            consumerProguardFiles("consumer-rules.pro")
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
+}
+
+tasks.withType<JavaCompile> {
+    options.compilerArgs.addAll(listOf("--release", "17")) // This is for Java language version 17
 }
 
 dependencies {
@@ -43,5 +51,21 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
     implementation("com.squareup.picasso:picasso:2.8")
+}
 
+publishing {
+    publications {
+        create<MavenPublication>("mavenJava") {
+            groupId = "com.github.AhmedOmara14"
+            artifactId = "android-demo-lib"
+            version = "1.0"
+
+            pom {
+                description.set("DESCRIPTION")
+            }
+        }
+    }
+    repositories {
+        mavenLocal()
+    }
 }

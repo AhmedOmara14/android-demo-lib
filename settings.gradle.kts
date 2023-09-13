@@ -1,8 +1,10 @@
 pluginManagement {
     repositories {
+        gradlePluginPortal()
         google()
         mavenCentral()
-        gradlePluginPortal()
+        maven { url=uri("https://jitpack.io") } // add like this
+        mavenLocal()
     }
 }
 dependencyResolutionManagement {
@@ -10,9 +12,11 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven { url=uri("https://jitpack.io") } // add like this
+        mavenLocal()
+
     }
 }
-
 rootProject.name = "libs_test"
 include(":app")
 include(":TestSdk")
