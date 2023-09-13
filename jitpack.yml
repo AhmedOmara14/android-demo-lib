@@ -5,7 +5,7 @@ before_install:
   - ./scripts/prepareJitpackEnvironment.sh
 
 install:
-  - FILE="TestSdk-debug.aar"
+  - FILE="TestSdk-release.aar"
   - GROUP="com.github.AhmedOmara14"
   - ARTIFACT_ID="android-demo-lib"
   - VERSION="1.0"
