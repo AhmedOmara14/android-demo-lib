@@ -5,6 +5,8 @@ pluginManagement {
         mavenCentral()
         maven { url=uri("https://jitpack.io") } // add like this
         mavenLocal()
+        jcenter()
+
     }
 }
 dependencyResolutionManagement {
@@ -14,6 +16,7 @@ dependencyResolutionManagement {
         mavenCentral()
         maven { url=uri("https://jitpack.io") } // add like this
         mavenLocal()
+        jcenter()
 
     }
 }
