@@ -1,0 +1,10 @@
+jdk:
+  openjdk17
+beforeInstall:
+  - ./scripts/prepareJitpackEnvironment.sh
+install:
+  - FILE="-Dfile=TestSdk-debug.aar"
+  - GROUP="com.github.AhmedOmara14"
+  - ArtifactId="android-demo-lib"
+  - mvn install:install-file $FILE -DgroupId
+  - mvn install:install-file $FILE -DgroupId=$GROUP -DartifactId=$ArtifactId -Dversion=1.0
